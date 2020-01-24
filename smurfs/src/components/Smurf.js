@@ -33,6 +33,14 @@ const SmurfCard = styled.div`
   color: #eee;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
   border-radius: 3px;
+
+  @media (max-width: 1100px) {
+    width: calc(50% - 6rem);
+  }
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 `;
 
 const Button = styled.button`
@@ -41,7 +49,7 @@ const Button = styled.button`
   padding: 0.5rem;
   color: #fff;
   transition: 0.2s ease-out all;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, .25);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
   border-radius: 3px;
 
   :hover {

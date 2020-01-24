@@ -41,8 +41,8 @@ export const StyledForm = styled.form`
   align-items: center;
   background-color: #1c1c1c;
   padding: 0.5rem 20%;
-  min-width: 500px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+  transition: 0.2s ease-out all;
 
   label {
     color: #efefef;
@@ -75,5 +75,13 @@ export const StyledForm = styled.form`
 
   * {
     margin: 0.25rem;
+  }
+
+  @media (max-width: 1100px) {
+    padding: 0.5rem;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
   }
 `;
