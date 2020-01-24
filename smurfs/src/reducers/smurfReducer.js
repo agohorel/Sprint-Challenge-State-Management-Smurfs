@@ -1,10 +1,17 @@
+import {
+  LOAD_SMURF,
+  LOAD_SMURF_SUCCESS,
+  LOAD_SMURF_FAILURE,
+  ADD_SMURF,
+  ADD_SMURF_SUCCESS,
+  ADD_SMURF_FAILURE
+} from "../actions/types";
+
 const initialState = {
   loadingSmurf: false,
-  loadingSmurfSuccess: false,
-  loadingSmurfFailure: false,
+  loadingSmurfError: "",
   postingSmurf: false,
-  postingSmurfSuccess: false,
-  postingSmurfFailure: false,
+  postingSmurfError: "",
   smurfs: []
 };
 
@@ -12,6 +19,23 @@ export const smurfReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case LOAD_SMURF:
+      return {
+        ...state,
+        loadingSmurf: true
+      };
+    case LOAD_SMURF_SUCCESS:
+      return {
+        ...state,
+        loadingSmurf: false,
+        smurfs: payload
+      };
+    case LOAD_SMURF_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        loadingSmurfError: payload
+      };
     default:
       return state;
   }

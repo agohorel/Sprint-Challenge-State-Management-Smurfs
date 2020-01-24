@@ -1,9 +1,22 @@
-import React from 'react'
+import React from "react";
+import { connect } from "react-redux";
 
-export const Smurfs = () => {
-    return (
-        <div>
-            smurfs go here
-        </div>
-    )
-}
+import { Smurf } from "./Smurf";
+
+const Smurfs = ({ smurfs }) => {
+  return (
+    <>
+      {smurfs.map(smurf => (
+        <Smurf key={smurf.id} smurf={smurf}></Smurf>
+      ))}
+    </>
+  );
+};
+
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs
+  };
+};
+
+export default connect(mapStateToProps, {})(Smurfs);

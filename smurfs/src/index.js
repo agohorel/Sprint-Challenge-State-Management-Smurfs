@@ -10,8 +10,6 @@ import App from "./components/App";
 
 const store = createStore(smurfReducer, applyMiddleware(thunk));
 
-console.log(store.getState());
-
 ReactDOM.render(
   <Provider store={store}>
     <App />
