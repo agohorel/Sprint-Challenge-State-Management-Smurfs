@@ -36,6 +36,23 @@ export const smurfReducer = (state = initialState, action) => {
         loading: false,
         loadingSmurfError: payload
       };
+    case ADD_SMURF:
+      return {
+        ...state,
+        postingSmurf: true
+      };
+    case ADD_SMURF_SUCCESS:
+      return {
+        ...state,
+        postingSmurf: false,
+        smurfs: payload
+      };
+    case ADD_SMURF_FAILURE:
+      return {
+        ...state,
+        postingSmurf: false,
+        postingSmurfError: payload
+      };
     default:
       return state;
   }

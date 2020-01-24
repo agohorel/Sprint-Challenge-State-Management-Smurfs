@@ -5,6 +5,7 @@ import "./App.css";
 import { getSmurfs } from "../actions/getSmurf";
 
 import Smurfs from "../components/Smurfs";
+import Form from "../components/Form";
 
 class App extends Component {
   componentDidMount() {
@@ -14,6 +15,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Form></Form>
         <Smurfs></Smurfs>
       </div>
     );
