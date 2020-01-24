@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 
 import { addSmurf } from "../actions/addSmurf";
+import { updateSmurfForm } from "../actions/updateSmurfForm";
 
-const Form = ({ addSmurf }) => {
-  const [formData, setFormData] = useState({});
-
+const Form = ({ addSmurf, updateSmurfForm, smurfFormData }) => {
   const handleChange = e => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
+    updateSmurfForm({ ...smurfFormData, [e.target.id]: e.target.value });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    addSmurf(formData);
+    addSmurf(smurfFormData);
   };
 
   return (
@@ -28,4 +27,10 @@ const Form = ({ addSmurf }) => {
   );
 };
 
-export default connect(undefined, { addSmurf })(Form);
+const mapStateToProps = state => {
+  return {
+    smurfFormData: state.smurfFormData
+  };
+};
+
+export default connect(mapStateToProps, { addSmurf, updateSmurfForm })(Form);

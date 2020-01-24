@@ -7,7 +7,11 @@ import {
   ADD_SMURF_FAILURE,
   DELETE_SMURF,
   DELETE_SMURF_SUCCESS,
-  DELETE_SMURF_FAILURE
+  DELETE_SMURF_FAILURE,
+  EDIT_SMURF,
+  EDIT_SMURF_SUCCESS,
+  EDIT_SMURF_FAILURE,
+  UPDATE_SMURF_FORM
 } from "../actions/types";
 
 const initialState = {
@@ -17,11 +21,16 @@ const initialState = {
   postingSmurfError: "",
   deletingSmurf: false,
   deletingSmurfError: "",
-  smurfs: []
+  editingSmurf: false,
+  editingSmurfError: "",
+  smurfs: [],
+  smurfFormData: {}
 };
 
 export const smurfReducer = (state = initialState, action) => {
   const { type, payload } = action;
+
+  console.log(type, payload);
 
   switch (type) {
     case LOAD_SMURF:
@@ -74,6 +83,28 @@ export const smurfReducer = (state = initialState, action) => {
         ...state,
         deletingSmurf: false,
         deletingSmurfError: payload
+      };
+    case EDIT_SMURF:
+      return {
+        ...state,
+        editingSmurf: true
+      };
+    case EDIT_SMURF_SUCCESS:
+      return {
+        ...state,
+        editingSmurf: false,
+        smurfs: payload
+      };
+    case EDIT_SMURF_FAILURE:
+      return {
+        ...state,
+        editingSmurf: false,
+        editingSmurfError: payload
+      };
+    case UPDATE_SMURF_FORM:
+      return {
+        ...state,
+        smurfFormData: payload
       };
     default:
       return state;
