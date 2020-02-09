@@ -1,16 +1,31 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import styled from "styled-components";
 import "./App.css";
+
+import { getSmurfs } from "../actions/getSmurf";
+
+import Smurfs from "../components/Smurfs";
+import Form from "../components/Form";
+
 class App extends Component {
+  componentDidMount() {
+    this.props.getSmurfs();
+  }
+
   render() {
     return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-      </div>
+      <Body className="App">
+        <Form></Form>
+        <Smurfs></Smurfs>
+      </Body>
     );
   }
 }
 
-export default App;
+export default connect(undefined, { getSmurfs })(App);
+
+const Body = styled.div`
+  background-image: linear-gradient(to bottom right, #03c2fc, #09449c);
+  min-height: 100vh;
+`;
